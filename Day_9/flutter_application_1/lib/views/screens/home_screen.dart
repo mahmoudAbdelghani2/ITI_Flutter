@@ -12,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
-  String _currentView = "List View";
   late final TabController _tabBarController;
 
   @override
@@ -35,42 +34,12 @@ class _HomeScreenState extends State<HomeScreen>
             tabs: [
               Tab(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.notes),
-                    const SizedBox(width: 6),
-                    DropdownButton<String>(
-                      value: _currentView,
-                      underline: const SizedBox(),
-                      icon: const Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.white,
-                      ),
-                      dropdownColor: Colors.white,
-                      style: const TextStyle(color: AppColors.textLight),
-                      items: const [
-                        DropdownMenuItem(
-                          value: "Grid View",
-                          child: Text(
-                            "Grid View",
-                            style: TextStyle(color: AppColors.textLight),
-                          ),
-                        ),
-                        DropdownMenuItem(
-                          value: "List View",
-                          child: Text(
-                            "List View",
-                            style: TextStyle(color: AppColors.textLight),
-                          ),
-                        ),
-                      ],
-                      onChanged: (value) {
-                        if (value != null) {
-                          setState(() {
-                            _currentView = value;
-                          });
-                        }
-                      },
+                    Icon(Icons.notes_outlined, color: AppColors.textLight),
+                    SizedBox(width: 8),
+                    Text(
+                      'All Notes',
+                      style: TextStyle(color: AppColors.textLight),
                     ),
                   ],
                 ),
@@ -78,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen>
               Tab(
                 child: Row(
                   children: [
-                    Icon(Icons.add),
+                    Icon(Icons.add, color: AppColors.textLight),
                     SizedBox(width: 8),
                     Text(
                       'Add Note',
@@ -93,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen>
         body: TabBarView(
           controller: _tabBarController,
           children: [
-            Center(child: NotesScreen(_currentView)),
+            Center(child: NotesScreen()),
             Center(child: AddNotesScreen()),
           ],
         ),

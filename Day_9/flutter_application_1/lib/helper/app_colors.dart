@@ -11,7 +11,7 @@ class AppColors {
   static const Color cardBackground = Color(0xFF4FD1C5); // Turquoise
 
   // TextField background - Light pink
-  static const Color textFieldBackground = Color(0xFFFFD6E0); // Light pink
+  static const Color textFieldBackground = Color.fromARGB(255, 244, 158, 179); // Light pink
   // TextField text color - Deep navy
   static const Color textFieldText = Color(0xFF22223B); // Navy
 

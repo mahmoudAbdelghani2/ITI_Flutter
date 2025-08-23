@@ -1,3 +1,4 @@
+
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -31,6 +32,12 @@ class NoteDb {
       },
     );
   }
+
+  Future<void> clearAllNotes() async {
+    final db = await database;
+    await db.delete('notes');
+  }
+
 
   Future<int> insertNote(
     String title,

@@ -37,20 +37,10 @@ class _ListWidgetState extends State<ListWidget> {
               fontSize: 20,
             ),
           ),
-          leading: Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(shape: BoxShape.circle),
-            child: Text(
-              '${widget.note.id}',
-              style: TextStyle(
-                fontSize: 15,
-                color: AppColors.text,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          leading:Image.asset("assets/images/Task.png"),
           trailing: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'Day: ${widget.note.day}',

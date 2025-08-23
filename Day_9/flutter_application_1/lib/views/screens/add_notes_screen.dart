@@ -4,6 +4,7 @@ import 'package:flutter_application_1/helper/app_colors.dart';
 import 'package:flutter_application_1/models/notes_model.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:lottie/lottie.dart';
 
 class AddNotesScreen extends StatefulWidget {
   const AddNotesScreen({super.key});
@@ -67,24 +68,42 @@ class _AddNotesScreenState extends State<AddNotesScreen> {
       _descriptionController.clear();
       _dayController.clear();
       _hourController.clear();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Note added successfully!',
+            style: TextStyle(color: AppColors.text),
+          ),
+          backgroundColor: Colors.green,
+        ),
+      );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
           child: Column(
             children: [
+              SizedBox(
+                height: 200,
+                width: 200,
+                child: Lottie.asset('assets/lottie/PaperNotes.json'),
+              ),
               TextFormField(
                 controller: _titleController,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.title),
                   labelText: 'Title',
                   labelStyle: TextStyle(color: AppColors.textFieldText),
                   fillColor: AppColors.textFieldBackground,
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty || value.length < 3) {
@@ -97,10 +116,13 @@ class _AddNotesScreenState extends State<AddNotesScreen> {
               TextFormField(
                 controller: _descriptionController,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.description),
                   labelText: 'Description',
                   labelStyle: TextStyle(color: AppColors.textFieldText),
                   fillColor: AppColors.textFieldBackground,
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty || value.length < 5) {
@@ -112,11 +134,15 @@ class _AddNotesScreenState extends State<AddNotesScreen> {
               const SizedBox(height: 10),
               TextFormField(
                 controller: _dayController,
+                readOnly: true,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.calendar_today),
                   labelText: 'Day',
                   labelStyle: TextStyle(color: AppColors.textFieldText),
                   fillColor: AppColors.textFieldBackground,
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -136,11 +162,15 @@ class _AddNotesScreenState extends State<AddNotesScreen> {
               const SizedBox(height: 10),
               TextFormField(
                 controller: _hourController,
+                readOnly: true,
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.access_time),
                   labelText: 'Hour',
                   labelStyle: TextStyle(color: AppColors.textFieldText),
                   fillColor: AppColors.textFieldBackground,
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                  ),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
