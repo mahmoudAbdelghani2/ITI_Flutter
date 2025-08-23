@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controllers/student_controller.dart';
-import 'package:flutter_application_1/view/screens/main_screen.dart';
+import 'package:flutter_application_1/controllers/notes_controllers.dart';
+import 'package:flutter_application_1/views/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main()  {
   runApp(
     ChangeNotifierProvider(
-      create: (_) => StudentController(),
+      create: (context) => NotesController(),
       child: const MyApp(),
     ),
   );
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -19,8 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter App',
-      home: MainScreen(),
+      title: 'Flutter',
+      home: HomeScreen(),
     );
   }
 }

@@ -20,7 +20,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
-      initialEntryMode: DatePickerEntryMode.calendarOnly,
       helpText: "Choose a date",
       cancelText: "Cancel",
       confirmText: "Confirm",
