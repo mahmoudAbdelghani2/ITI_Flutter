@@ -14,6 +14,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   void initState() {
     super.initState();
+    // ignore: use_build_context_synchronously
     Provider.of<ProductController>(context, listen: false).fetchProducts();
   }
 
@@ -30,23 +31,50 @@ class _ProductScreenState extends State<ProductScreen> {
           if (controller.isLoading) {
             return const Center(child: CircularProgressIndicator());
           }
-          
           if (controller.products.isEmpty) {
             return const Center(child: Text('No products available'));
           }
-          return GridView.builder(
+          return Padding(
             padding: const EdgeInsets.all(8.0),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.7,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+            child: Column(
+              children: [
+                TextField(
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Search products...',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    focusColor: Colors.blue,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      borderSide: BorderSide(color: Colors.blue),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                Expanded(
+                  child: GridView.builder(
+                    padding: const EdgeInsets.all(4.0),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.7,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                        ),
+                    itemCount: controller.products.length,
+                    itemBuilder: (context, index) {
+                      final product = controller.products[index];
+                      return GridWidget(product: product);
+                    },
+                  ),
+                ),
+              ],
             ),
-            itemCount: controller.products.length,
-            itemBuilder: (context, index) {
-              final product = controller.products[index];
-              return GridWidget(product: product);
-            },
           );
         },
       ),

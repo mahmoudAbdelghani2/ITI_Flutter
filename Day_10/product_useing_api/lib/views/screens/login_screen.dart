@@ -2,7 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:product_useing_api/views/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lottie/lottie.dart';
 
+/*
+ "username": johnd,
+ "password": m38rmF$,
+ */
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -48,7 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
-
     } catch (error) {
       setState(() {
         isLoading = false;
@@ -70,42 +74,53 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Padding(
         padding: EdgeInsets.all(16),
 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(
-                labelText: "Username",
-                border: OutlineInputBorder(),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Lottie.asset("assets/lottie/Login.json", height: 350, width: 350),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  labelText: "Username",
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
 
-            SizedBox(height: 20),
+              SizedBox(height: 20),
 
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(),
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  labelText: "Password",
+                  border: OutlineInputBorder(),
+                ),
+                obscureText: true,
               ),
-              obscureText: true,
-            ),
-
-            SizedBox(height: 50),
-
-            isLoading
-                ? CircularProgressIndicator()
-                : ElevatedButton(onPressed: login, child: Text("Login")),
-
-            SizedBox(height: 20),
-            if (token != null)
-              Text(
-                "Token: $token",
-                style: TextStyle(color: Colors.green),
-                textAlign: TextAlign.center,
-              ),
-          ],
+              SizedBox(height: 50),
+              isLoading
+                  ? CircularProgressIndicator()
+                  : SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: ElevatedButton(
+                        onPressed: login,
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 16),
+                          backgroundColor: Colors.blue,
+                        ),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+            ],
+          ),
         ),
       ),
     );
