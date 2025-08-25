@@ -64,10 +64,13 @@ class _AddNotesScreenState extends State<AddNotesScreen> {
         context,
         listen: false,
       ).addNote(newNote);
+
       _titleController.clear();
       _descriptionController.clear();
       _dayController.clear();
       _hourController.clear();
+      
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(

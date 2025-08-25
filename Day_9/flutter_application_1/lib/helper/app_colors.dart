@@ -1,29 +1,21 @@
 import 'dart:ui';
 
 class AppColors {
-  // AppBar color - Vibrant purple-pink gradient
-  static const Color appBar = Color(0xFFB721FF); // Purple
+  static const Color appBar = Color(0xFFB721FF);
 
-  // Screen background - Soft creamy
-  static const Color appBackground = Color(0xFFFFF6E0); // Creamy yellow
+  static const Color appBackground = Color(0xFFFFF6E0);
 
-  // Card/Grid background - Playful blue
-  static const Color cardBackground = Color(0xFF4FD1C5); // Turquoise
+  static const Color cardBackground = Color(0xFF4FD1C5); 
 
-  // TextField background - Light pink
-  static const Color textFieldBackground = Color.fromARGB(255, 244, 158, 179); // Light pink
-  // TextField text color - Deep navy
-  static const Color textFieldText = Color(0xFF22223B); // Navy
+  static const Color textFieldBackground = Color.fromARGB(255, 244, 158, 179);
+  static const Color textFieldText = Color(0xFF22223B);
 
-  // Button colors
-  static const Color saveButtonColor = Color(0xFF4CAF50); // Green
-  static const Color editButton = Color(0xFFFFA500); // Orange
-  static const Color deleteButton = Color(0xFFFF3B30); // Vivid red
+  static const Color saveButtonColor = Color(0xFF4CAF50);
+  static const Color editButton = Color(0xFFFFA500);
+  static const Color deleteButton = Color(0xFFFF3B30);
 
-  // General text color
-  static const Color text = Color(0xFF22223B); // Navy
-  static const Color textLight = Color.fromARGB(255, 193, 223, 220); // Light turquoise
+  static const Color text = Color(0xFF22223B);
+  static const Color textLight = Color.fromARGB(255, 193, 223, 220);
 
-  // Accent color for highlights - Energetic yellow
-  static const Color accent = Color(0xFFFFE156); // Bright yellow
+  static const Color accent = Color(0xFFFFE156);
 }
